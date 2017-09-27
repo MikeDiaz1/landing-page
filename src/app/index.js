@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-require('./styles.scss');
+require('./css/index.scss');
 
 //Create a component
 var Grid = React.createClass({
