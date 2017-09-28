@@ -1,0 +1,9 @@
+footer{
+    height: 200px;
+}
+
+#footer-top{
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
