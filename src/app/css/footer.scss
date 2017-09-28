@@ -4,6 +4,7 @@ footer{
 
 #footer-top{
     display: grid;
-    text-align: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 10px;
+    grid-template-columns: repeat(6, 1fr);
 }
