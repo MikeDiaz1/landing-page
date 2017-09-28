@@ -1,11 +1,33 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 require('./css/index.scss');
 
-//Create a component
-var Grid = React.createClass({
-    render: function(){
+class App extends React.Component {
+    render (){
+        return(
+            <Router>
+                <div>
+                    <Route exact path='/' component={Grid}/>
+                    <Route exact path='/about' component={About}/>
+                </div>
+            </Router>
+        );
+    }
+}
+
+class About extends React.Component {
+    render(){
+        return(
+            <p>This is an about page</p>
+        );
+    }
+
+}
+
+class Grid extends React.Component {
+    render (){
         return(
             <div id='grid'>
                 <div>1</div>
@@ -20,6 +42,7 @@ var Grid = React.createClass({
             </div>
         );
     }
-});
+}
 
-ReactDOM.render(<Grid />, document.getElementById('grid-wrapper'));
+//Render to HTML DOM
+ReactDOM.render(<App />, document.getElementById('content-wrapper'));
