@@ -11,6 +11,7 @@ module.exports = {
     module: {
         loaders: [
             {
+                exclude: '/node_modules/',
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader',
@@ -20,7 +21,31 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: 'style-loader!css-loader!sass-loader'
+                use: [
+                  {
+                    loader: 'style-loader'
+                  },
+                  {
+                    loader: 'css-loader'
+                  },
+                  {
+                    loader: 'sass-loader', 
+                    options: {
+                      includePaths: ['./node_modules']
+                    }
+                  }
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                        include: path.resolve(__dirname, 'assests')
+                    }  
+                  }
+                ]
             }
         ]
     }
