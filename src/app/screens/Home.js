@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 import 'grommet/scss/hpe/index.scss';
 
 import Section1 from '../components/Section1'
-import App from 'grommet/components/App'
 import Article from 'grommet/components/Article'
 import Section from 'grommet/components/Section'
-import Box from 'grommet/components/Box'
 import Headline from 'grommet/components/Headline'
 import Footer from 'grommet/components/Footer'
-import Title from 'grommet/components/Title'
 
 export default class Home extends Component {
     render() {
