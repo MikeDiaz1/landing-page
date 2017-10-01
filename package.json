@@ -16,7 +16,9 @@
   "dependencies": {
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "grommet": "https://github.com/grommet/grommet/tarball/stable",
+    "grommet-addons": "https://github.com/grommet/grommet-addons/tarball/stable"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
