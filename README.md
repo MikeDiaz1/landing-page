@@ -1,6 +1,8 @@
 # landing-page
 
-A landing page. Currently just some boilerplate and setup.
+A landing page for Upropos.
+
+Implements Grommet HPE theme: http://grommet.io/hpe/docs/components
 
 ## Demo Instructions
 Requires Node.js: https://nodejs.org/en/
