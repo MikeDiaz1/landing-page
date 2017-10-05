@@ -13,7 +13,10 @@ export default class Navbar extends Component {
                 </div>
                 <div className="navbar-menu">
                     <div className="navbar-end">
-
+                        <a className="nav-item" href="#">Section 1</a>
+                        <a className="nav-item" href="#">Section 2</a>
+                        <a className="nav-item" href="#">Section 3</a>
+                        <a className="nav-item" href="#">Section 4</a>
                     </div>
                 </div>
             </nav>
