@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
+import Navbar from '../components/Navbar';
+
 export default class Home extends Component {
     render() {
         return (
             <div>
             <section className="hero is-primary is-fullheight">
-                <nav className="navbar is-dark">
-                </nav>
+                <Navbar />
                 <div className="hero-body">
                     <div className="container">
                         <h1 className="title">
