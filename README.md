@@ -2,7 +2,7 @@
 
 A landing page for Upropos.
 
-Implements Grommet HPE theme: http://grommet.io/hpe/docs/components
+Implements Bulma CSS Framework
 
 ## Demo Instructions
 Requires Node.js: https://nodejs.org/en/
@@ -13,14 +13,6 @@ Open a terminal, cd to the project directory
 # Install dependencies
 
 npm install
-
-# Build local Grommet library
-
-cd 'node_modules/grommet'
-
-npm install
-
-cd '../..'
 
 # Run dev server
 
