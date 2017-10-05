@@ -12,7 +12,7 @@
     "url": "https://github.com/MikeDiaz1/landing-page.git"
   },
   "author": "Michael Diaz-Stewart",
-  "license": "",
+  "license": "LicenseRef-LICENCE",
   "dependencies": {
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
