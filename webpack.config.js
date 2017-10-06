@@ -29,10 +29,7 @@ module.exports = {
                     loader: 'css-loader'
                   },
                   {
-                    loader: 'sass-loader', 
-                    options: {
-                      includePaths: ['./node_modules']
-                    }
+                    loader: 'sass-loader'
                   }
                 ]
             },
@@ -40,10 +37,7 @@ module.exports = {
                 test: /\.(png|jpg|gif|svg)$/,
                 use: [
                   {
-                    loader: 'file-loader',
-                    options: {
-                        include: path.resolve(__dirname, 'assests')
-                    }  
+                    loader: 'file-loader'
                   }
                 ]
             }

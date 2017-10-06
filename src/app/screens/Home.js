@@ -7,27 +7,39 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <section className="hero is-primary is-fullheight">
+                <section id="section-1" className="parallax hero is-primary is-fullheight">
                     <Navbar />
-                    <div className="hero-body">
-                        <div className="container">
-                            <h1 className="title">
-                                Hero title
+                </section>
+
+                <section className="hero is-fullheight">
+                    <section id="section-2" className="hero is-info is-bold is-medium">
+                        <div className="hero-body">
+                            <div className="container">
+                                <h1 className="title">
+                                    Medium title
                             </h1>
-                            <h2 className="subtitle">
-                                Hero subtitle
+                                <h2 className="subtitle">
+                                    Medium subtitle
                             </h2>
+                            </div>
                         </div>
-                    </div>
+                    </section>
+
+                    <section className="hero is-light is-large">
+                        <div className="hero-body">
+                            <div className="container">
+                                <h1 className="title">
+                                    Large title
+                            </h1>
+                                <h2 className="subtitle">
+                                    Large subtitle
+                            </h2>
+                            </div>
+                        </div>
+                    </section>
                 </section>
 
-                <section className="hero is-white is-fullheight">
-                </section>
-
-                <section className="hero is-dark is-fullheight">
-                </section>
-
-                <section className="hero is-white is-fullheight">
+                <section id="section-3" className="hero is-white is-fullheight">
                     <div className="hero-body">
                         <div className="container">
                             <h1 className="title">
