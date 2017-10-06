@@ -20,7 +20,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.sass$/,
+                test: /\.(sass|scss)$/,
                 use: [
                   {
                     loader: 'style-loader'
@@ -40,7 +40,16 @@ module.exports = {
                     loader: 'file-loader'
                   }
                 ]
-            }
+            },
+            {
+                test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                use: [{
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[ext]'
+                  }
+                }]
+              }
         ]
     }
 };
