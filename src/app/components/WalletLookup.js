@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { CONTRACT } from '../contract.js'
 
 
-export default class WalletInfo extends Component {
+export default class WalletLookup extends Component {
     constructor() {
         super()
         this.state = {
