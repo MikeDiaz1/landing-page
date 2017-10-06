@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import 'font-awesome/scss/font-awesome.scss'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer'
 
