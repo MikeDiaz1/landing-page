@@ -42,8 +42,17 @@ export default class Loading extends Component {
                             <h1 className="title">
                                 Waiting for web3...
                             </h1>
+                            <span className="icon">
+                                <i className="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                            </span>
                             <h2 className="subtitle">
                                 This app requires an Ethereum compatible browser (Mist, MetaMask)
+                                <br></br>
+                                <br></br>
+                                <a href="/">
+                                    <span className="icon is-small"><i className="fa fa-arrow-left"></i></span>
+                                    <span> Back</span>
+                                </a>
                             </h2>
                         </div>
                     </div>
