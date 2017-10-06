@@ -12,8 +12,8 @@ export default class Home extends Component {
                     <Navbar />
                 </section>
 
-                <section className="hero is-fullheight">
-                    <section id="section-2" className="hero is-info is-bold is-medium">
+                <section id="section-2" className="hero is-fullheight">
+                    <section className="hero is-info is-bold is-medium">
                         <div className="hero-body">
                             <div className="container">
                                 <h1 className="title">
