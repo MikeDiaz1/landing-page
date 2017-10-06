@@ -7,7 +7,7 @@ export default class Footer extends Component {
             <div className="container">
               <div className="content has-text-centered">
                 <p>
-                    Footer text
+                    &copy; 2017 Upropos
                 </p>
               </div>
             </div>
