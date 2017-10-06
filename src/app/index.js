@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './bulma/bulma.sass'
+import 'font-awesome/scss/font-awesome.scss'
+import Main from './Main'
 
-import App from './App';
-
-const element = document.getElementById('content');
-ReactDOM.render(<App />, element);
-
-//document.body.classList.remove('loading');
+const content = document.getElementById('content')
+ReactDOM.render(<Main />, content)

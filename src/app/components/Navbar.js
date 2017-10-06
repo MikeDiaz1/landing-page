@@ -23,6 +23,7 @@ export default class Navbar extends Component {
                         <a className="nav-item" onClick={() => this.scrollTo('section-1')}>Home</a>
                         <a className="nav-item" onClick={() => this.scrollTo('section-2')}>About</a>
                         <a className="nav-item" onClick={() => this.scrollTo('section-3')}>Contact</a>
+                        <a className="nav-item" href="/Demo">Demo</a>
 
                         <a className="navbar-item" href="https://twitter.com/upropos1" target="_blank">
                             <span className="icon" style={{ color: '#FFF' }}>
