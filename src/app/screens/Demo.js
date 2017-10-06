@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import WalletInfo from '../components/WalletInfo'
+import WalletLookup from '../components/WalletLookup'
 import Footer from '../components/Footer'
 
 export default class Demo extends Component {
@@ -10,6 +11,7 @@ export default class Demo extends Component {
         return (
             <div className="section is-large">
                 <WalletInfo />
+                <WalletLookup />
             </div>
         );
     }
