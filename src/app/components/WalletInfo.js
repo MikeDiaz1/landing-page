@@ -42,7 +42,9 @@ export default class WalletInfo extends Component {
                             balance: web3.fromWei(bal, 'ether').toNumber()
                         })
                     }
-                    console.log(err)
+                    else {
+                        console.log(err)
+                    }
                 })
 
                 CONTRACT.balanceOf(this.state.coinbase, (err, tkns) => {
@@ -51,10 +53,14 @@ export default class WalletInfo extends Component {
                             tokens: web3.fromWei(tkns, 'ether').toNumber()
                         })
                     }
-                    console.log(err)
+                    else {
+                        console.log(err)
+                    }
                 })
             }
-            console.log(err)
+            else {
+                console.log(err)
+            }
         })
     }
 
