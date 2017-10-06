@@ -13,9 +13,9 @@ export default class Navbar extends Component {
                 </div>
                 <div className="navbar-menu">
                     <div className="navbar-end">
-                        <a className="nav-item" onClick={smoothScroll.scrollTo('section-1')}>Home</a>
-                        <a className="nav-item" onClick={smoothScroll.scrollTo('section-2')}>About</a>
-                        <a className="nav-item" onClick={smoothScroll.scrollTo('section-3')}>Contact</a>
+                        <a className="nav-item" href="#section-1">Home</a>
+                        <a className="nav-item" href="#section-2">About</a>
+                        <a className="nav-item" href="#section-3">Contact</a>
 
                         <a className="navbar-item" href="https://twitter.com/upropos1" target="_blank">
                             <span className="icon" style={{ color: '#FFF' }}>
