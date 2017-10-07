@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { CONTRACT } from '../contract.js'
 
-
 export default class WalletInfo extends Component {
+
     constructor() {
         super()
         this.state = {
-            coinbase: '0x00',
+            coinbase: '',
             balance: 0,
-            tokens: 0
+            tokens: 0,
+            interval: null
         }
     }
 
     updateChecker() {
-        setInterval(() => {
+        var interval = setInterval(() => {
             web3.eth.getCoinbase((err, cb) => {
                 if (!err) {
                     if (this.state.coinbase != cb) {
@@ -22,6 +23,10 @@ export default class WalletInfo extends Component {
                 }
             })
         }, 1000)
+
+        this.setState({
+            interval: interval
+        })
     }
 
     componentWillMount() {
@@ -29,9 +34,21 @@ export default class WalletInfo extends Component {
         this.updateChecker()
     }
 
+    componentWillUnmount(){
+        clearInterval(this.state.interval);
+    }
+
     update() {
         web3.eth.getCoinbase((err, cb) => {
             if (!err) {
+                if (cb == null) {
+                    this.setState({
+                        coinbase: "Not Logged In",
+                        balance: 0,
+                        tokens: 0
+                    })
+                    return;
+                }
                 this.setState({
                     coinbase: cb
                 })
@@ -66,17 +83,27 @@ export default class WalletInfo extends Component {
 
     render() {
         return (
-            <div className="container">
-                <h1 className="title">Your Wallet</h1>
-                <h2 className="subtitle">
-                    Address: {this.state.coinbase}
-                </h2>
-                <h2 className="subtitle">
-                    Ether Balance: {this.state.balance} Ether
-                </h2>
-                <h2 className="subtitle">
-                    Token Balance: {this.state.tokens} Tokens
-                </h2>
+            <div className="box">
+                <div className="level">
+                    <div className="level-item">
+                        <h2 className="title">
+                            My Wallet
+                        </h2>
+                    </div>
+                </div>
+                <div className="container has-text-centered">
+                    <div className="columns">
+                        <div className="column is-6">
+                            <p className="subtitle">Address <strong>{this.state.coinbase}</strong></p>
+                        </div>
+                        <div className="column is-3">
+                            <p className="subtitle"><strong>{this.state.balance}</strong> Ether</p>
+                        </div>
+                        <div className="column is-3">
+                            <p className="subtitle"><strong>{this.state.tokens}</strong> Tokens</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
