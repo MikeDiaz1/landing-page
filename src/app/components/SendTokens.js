@@ -1,59 +1,112 @@
 import React, { Component } from 'react'
 import { CONTRACT } from '../contract.js'
+import _ from 'lodash'
 
 
 export default class SendTokens extends Component {
     constructor() {
         super()
         this.state = {
-            balance: 0,
-            tokens: 0
+            address: '',
+            amount: 0
         }
     }
 
-    changeHandler(e) {
-        if (!web3.isAddress(e.target.value)) {
+    sendTokens() {
+        if (!web3.isAddress(this.state.address)) {
             this.setState({
-                balance: 0,
-                tokens: 0
+                address: ''
             })
-            return;
+            alert('Invalid address')
+            return
         }
 
-        web3.eth.getBalance(e.target.value, (err, bal) => {
-            if (!err) {
-                this.setState({
-                    balance: web3.fromWei(bal, 'ether').toNumber()
-                })
-            }
-            console.log(err)
-        })
+        var amt = parseFloat(this.state.amount)
+        if (!_.isNumber(amt) || amt < 0) {
+            this.setState({
+                amount: 0
+            })
+            alert('Invalid amount')
+            return
+        }
 
-        CONTRACT.balanceOf(e.target.value, (err, tkns) => {
+        CONTRACT.transfer(this.state.address, web3.toWei(this.state.amount, 'ether'), (err, res) => {
             if (!err) {
+                console.log(res)
                 this.setState({
-                    tokens: web3.fromWei(tkns, 'ether').toNumber()
+                    address: '',
+                    amount: 0
                 })
+                return
             }
             console.log(err)
-            return;
+            this.setState({
+                address: '',
+                amount: 0
+            })
+        })
+    }
+
+    addressHandler(e) {
+        this.setState({
+            address: e.target.value
+        })
+    }
+
+    amountHandler(e) {
+        this.setState({
+            amount: e.target.value
         })
     }
 
     render() {
         return (
-            <div className="container">
-                <h1 className="title">Send Tokens</h1>
-                <div className="control">
-                    <input className="input" type="text" placeholder="Search Address" value={this.state.coinbase}
-                        onChange={this.changeHandler.bind(this)}></input>
+            <div className="box">
+                <div className="level">
+                    <div className="level-item">
+                        <h2 className="title">
+                            Send Tokens
+                        </h2>
+                    </div>
                 </div>
-                <h2 className="subtitle">
-                    Ether Balance: {this.state.balance} Ether
-                </h2>
-                <h2 className="subtitle">
-                    Token Balance: {this.state.tokens} Tokens
-                </h2>
+                <div className="container has-text-centered">
+                    <div className="columns">
+                        <div className="column is-6">
+                            <div className="field">
+                                <div className="control is-expanded has-icons-right">
+                                    <input className="input" type="text" value={this.state.address}
+                                        placeholder="To Address" onChange={this.addressHandler.bind(this)}>
+                                    </input>
+                                    <span className="icon is-small is-right">
+                                        <i className="fa fa-user-circle-o"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="column is-3">
+                            <div className="field has-addons">
+                                <div className="control">
+                                    <input className="input" type="number" value={this.state.amount}
+                                        placeholder="Amount" onChange={this.amountHandler.bind(this)}>
+                                    </input>
+                                </div>
+                                <div className="control is-expanded">
+                                    <a className="button is-static">
+                                        Tokens
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="column is-2">
+                            <a className="button is-info" onClick={this.sendTokens.bind(this)}>
+                                <span className="icon is-small">
+                                    <i className="fa fa-paper-plane"></i>
+                                </span>
+                                <span>Confirm Transfer</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
