@@ -12,7 +12,7 @@ export default class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar is-transperant">
+            <nav className="navbar">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="#">
                         <img src={logo} alt="Upropos: The Future of Crowdfunding"></img>
