@@ -15,13 +15,7 @@ export default class WalletInfo extends Component {
 
     updateChecker() {
         var interval = setInterval(() => {
-            web3.eth.getCoinbase((err, cb) => {
-                if (!err) {
-                    if (this.state.coinbase != cb) {
-                        this.update()
-                    }
-                }
-            })
+            this.update()
         }, 1000)
 
         this.setState({
@@ -34,7 +28,7 @@ export default class WalletInfo extends Component {
         this.updateChecker()
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         clearInterval(this.state.interval);
     }
 
@@ -47,30 +41,33 @@ export default class WalletInfo extends Component {
                         balance: 0,
                         tokens: 0
                     })
-                    return;
+                    return
                 }
-                this.setState({
-                    coinbase: cb
-                })
+
+                if (cb != this.state.coinbase) {
+                    this.setState({
+                        coinbase: cb
+                    })
+                }
 
                 CONTRACT._eth.getBalance(this.state.coinbase, (err, bal) => {
-                    if (!err) {
+                    if (!err && bal != this.state.balance) {
                         this.setState({
                             balance: web3.fromWei(bal, 'ether').toNumber()
                         })
                     }
-                    else {
+                    else if (err) {
                         console.log(err)
                     }
                 })
 
                 CONTRACT.balanceOf(this.state.coinbase, (err, tkns) => {
-                    if (!err) {
+                    if (!err & tkns != this.state.tokens) {
                         this.setState({
                             tokens: web3.fromWei(tkns, 'ether').toNumber()
                         })
                     }
-                    else {
+                    else if (err) {
                         console.log(err)
                     }
                 })
@@ -84,17 +81,15 @@ export default class WalletInfo extends Component {
     render() {
         return (
             <div className="box">
-                <div className="level">
-                    <div className="level-item">
-                        <h2 className="title">
-                            My Wallet
-                        </h2>
-                    </div>
-                </div>
                 <div className="container has-text-centered">
                     <div className="columns">
                         <div className="column is-6">
-                            <p className="subtitle">Address <strong>{this.state.coinbase}</strong></p>
+                            <p className="subtitle">
+                                <span className="icon">
+                                    <i className="fa fa-user-circle-o"></i>
+                                </span>
+                                <strong> {this.state.coinbase}</strong>
+                            </p>
                         </div>
                         <div className="column is-3">
                             <p className="subtitle"><strong>{this.state.balance}</strong> Ether</p>
