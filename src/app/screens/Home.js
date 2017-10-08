@@ -7,7 +7,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <section id="section-1" className="parallax hero is-primary is-fullheight">
+                <section id="section-1" className="parallax hero is-dark is-fullheight">
                     <Navbar />
                     <div className="hero-body">
                         <div className="container has-text-centered">

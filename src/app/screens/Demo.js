@@ -106,6 +106,8 @@ export default class Demo extends Component {
                             <WalletInfo />
                             <Active tab={this.state.active} />
                         </div>
+                        <div className="container"> 
+                        </div>
                     </div>
                 </div>
                 <Footer />
