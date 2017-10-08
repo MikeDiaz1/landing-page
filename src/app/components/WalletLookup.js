@@ -17,7 +17,7 @@ export default class WalletLookup extends Component {
                 balance: 0,
                 tokens: 0
             })
-            return;
+            return
         }
 
         web3.eth.getBalance(e.target.value, (err, bal) => {
@@ -49,8 +49,8 @@ export default class WalletLookup extends Component {
                 <div className="level">
                     <div className="level-item">
                         <h2 className="title">
-                            Wallet Search
-                    </h2>
+                            Search
+                        </h2>
                     </div>
                 </div>
                 <div className="container has-text-centered">
