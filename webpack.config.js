@@ -8,6 +8,12 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/app/'
     },
+    devServer: {
+        contentBase: 'public/',
+        inline: true,
+        port: 5050,
+        historyApiFallback: true
+    },
     module: {
         loaders: [
             {
