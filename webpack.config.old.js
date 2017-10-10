@@ -1,41 +1,19 @@
 var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
-    entry: [
-        path.join(__dirname, 'src/index.js')
-    ],
+
+    entry: path.resolve(__dirname, 'src') + '/app/index.js',
     output: {
-        path: path.join(__dirname, '/dist/'),
-        filename: '[name]-[hash].min.js',
-        publicPath: '/'
+        path: path.resolve(__dirname, 'dist') + '/app',
+        filename: 'bundle.js',
+        publicPath: '/app/'
     },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                screw_ie8: true,
-                conditionals: true,
-                unused: true,
-                comparisons: true,
-                sequences: true,
-                dead_code: true,
-                evaluate: true,
-                if_return: true,
-                join_vars: true,
-              },
-              mangle: {
-                screw_ie8: true
-              },
-              output: {
-                comments: false,
-                screw_ie8: true
-              }
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
-    ],
+    devServer: {
+        contentBase: 'public/',
+        inline: true,
+        port: 5050,
+        historyApiFallback: true
+    },
     module: {
         loaders: [
             {
@@ -65,10 +43,7 @@ module.exports = {
                 test: /\.(png|jpg|gif|svg)$/,
                 use: [
                   {
-                    loader: 'file-loader',
-                    options: {
-                      name: '[name].[ext]'
-                    }
+                    loader: 'file-loader'
                   }
                 ]
             },

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import logo from '../../../public/img/Logo.png'
+import logo from '../../public/img/Logo.png'
 import WalletInfo from '../components/WalletInfo'
 import WalletLookup from '../components/WalletLookup'
 import SendTokens from '../components/SendTokens'

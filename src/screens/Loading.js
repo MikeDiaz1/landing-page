@@ -11,7 +11,7 @@ function sleep(ms) {
 }
 
 //Wait for web3 before loading page
-async function startUp() {
+function startUp() {
 
     //Found web3
     if (typeof web3 !== 'undefined') {
@@ -22,10 +22,6 @@ async function startUp() {
         ReactDOM.render(<Demo />, loading)
         return
     }
-
-    //No web3, keep checking...
-    await sleep(2000)
-    startUp()
 }
 
 export default class Loading extends Component {
