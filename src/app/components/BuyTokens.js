@@ -43,13 +43,13 @@ export default class BuyTokens extends Component {
 
         CONTRACT.buyProcoin({ value: web3.toWei(this.state.amount / this.state.rate, 'ether') }, (err, res) => {
             if (!err) {
-                console.log(res);
+                console.log(res)
                 this.setState({
                     amount: ''
                 })
                 return
             }
-            console.log(err);
+            console.log(err)
             this.setState({
                 amount: ''
             })

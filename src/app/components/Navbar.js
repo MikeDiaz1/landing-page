@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import logo from '../../../public/img/Logo-white.png';
+import logo from '../../../public/img/Logo-white.png'
 
 export default class Navbar extends Component {
 

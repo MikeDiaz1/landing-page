@@ -10,17 +10,14 @@ import Footer from '../components/Footer'
 
 
 function Active(props) {
-    const tab = props.tab;
+    const tab = props.tab
     switch (tab) {
         case 0:
             return <WalletLookup />
-            break
         case 1:
             return <SendTokens />
-            break
         case 2:
             return <BuyTokens />
-            break
     }
 }
 

@@ -29,7 +29,7 @@ export default class WalletInfo extends Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.state.interval);
+        clearInterval(this.state.interval)
     }
 
     update() {

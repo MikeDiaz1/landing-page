@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export default class Home extends Component {
@@ -60,6 +60,6 @@ export default class Home extends Component {
                     <Footer />
                 </section>
             </div>
-        );
+        )
     }
 }
