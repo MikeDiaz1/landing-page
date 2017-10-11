@@ -1,5 +1,6 @@
 # Build Directory
 dist/
+dist-server/
 
 # Logs
 logs

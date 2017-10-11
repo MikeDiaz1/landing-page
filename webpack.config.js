@@ -3,8 +3,6 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = [{
-    //Pack the front-end
-    name: "client",
     entry: [
         path.join(__dirname, 'src/index.js')
     ],
@@ -81,31 +79,6 @@ module.exports = [{
                         name: '[name].[ext]'
                     }
                 }]
-            }
-        ]
-    }
-},
-{
-    //Pack the back-end (ES6 transpilation)
-    name: "server",
-    entry: [
-        path.join(__dirname, 'server/server.js')
-    ],
-    output: {
-        path: path.join(__dirname, '/dist-server/'),
-        filename: 'server.js',
-        publicPath: '/'
-    },
-    target: "node",
-    module: {
-        loaders: [
-            {
-                exclude: '/node_modules/',
-                test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
             }
         ]
     }
