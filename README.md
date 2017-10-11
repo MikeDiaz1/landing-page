@@ -1,6 +1,6 @@
 # landing-page
 
-A landing page for Upropos.
+A landing page for Upropos built with React and Express.
 
 Implements Bulma CSS Framework
 
@@ -14,7 +14,11 @@ Open a terminal, cd to the project directory
 
 npm install
 
-# Run dev server
+# Build for testing
+
+npm run dev
+
+# Start the server
 
 npm start
 ```

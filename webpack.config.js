@@ -2,22 +2,24 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = [{
-    entry: [
-        path.join(__dirname, 'src/index.js')
-    ],
-    output: {
-        path: path.join(__dirname, '/dist/'),
-        filename: '[name]-[hash].min.js',
-        publicPath: '/'
-    },
-    plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new HtmlWebpackPlugin({
-            template: 'src/index.tpl.html',
-            inject: 'body',
-            filename: 'index.html'
-        }),
+const env = process.env.NODE_ENV || 'production';
+
+var plugins = [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new HtmlWebpackPlugin({
+        template: 'src/index.tpl.html',
+        inject: 'body',
+        filename: 'index.html'
+    }),
+    new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: JSON.stringify(env)
+        }
+    })
+]
+
+if (env === 'production') {
+    plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
@@ -38,11 +40,20 @@ module.exports = [{
                 comments: false,
                 screw_ie8: true
             }
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         })
+    )
+}
+
+module.exports = [{
+    entry: [
+        path.join(__dirname, 'src/index.js')
     ],
+    output: {
+        path: path.join(__dirname, '/dist/'),
+        filename: '[name]-[hash].min.js',
+        publicPath: '/'
+    },
+    plugins,
     module: {
         loaders: [
             {
@@ -72,7 +83,7 @@ module.exports = [{
                 ]
             },
             {
-                test: /.(png|jpg|gif|svg|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                test: /.(png|jpg|gif|ico|svg|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
