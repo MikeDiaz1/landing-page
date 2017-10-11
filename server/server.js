@@ -1,10 +1,11 @@
-var express = require('express');
+import Express from 'express'
 
-var app = express();
+var app = Express()
 
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/../public/index.html');
+app.use(express.static('dist'))
+app.get('*', function(req, res) {
+    res.sendFile(__dirname + '/../public/index.html')
 })
 
-console.log('hello');
-app.listen(3000);
+console.log('hello')
+app.listen(3000)

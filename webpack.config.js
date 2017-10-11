@@ -1,7 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+module.exports = [{
+    //Pack the front-end
+    name: "client",
     entry: [
         path.join(__dirname, 'src/index.js')
     ],
@@ -11,6 +14,12 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new HtmlWebpackPlugin({
+            template: 'src/index.tpl.html',
+            inject: 'body',
+            filename: 'index.html'
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
@@ -23,14 +32,14 @@ module.exports = {
                 evaluate: true,
                 if_return: true,
                 join_vars: true,
-              },
-              mangle: {
+            },
+            mangle: {
                 screw_ie8: true
-              },
-              output: {
+            },
+            output: {
                 comments: false,
                 screw_ie8: true
-              }
+            }
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -50,37 +59,54 @@ module.exports = {
             {
                 test: /\.(sass|scss)$/,
                 use: [
-                  {
-                    loader: 'style-loader'
-                  },
-                  {
-                    loader: 'css-loader'
-                  },
-                  {
-                    loader: 'sass-loader'
-                  }
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            outputStyle: 'compressed'
+                        }
+                    }
                 ]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                use: [
-                  {
+                test: /.(png|jpg|gif|svg|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                use: [{
                     loader: 'file-loader',
                     options: {
-                      name: '[name].[ext]'
+                        name: '[name].[ext]'
                     }
-                  }
-                ]
-            },
-            {
-                test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-                use: [{
-                  loader: 'file-loader',
-                  options: {
-                    name: '[name].[ext]'
-                  }
                 }]
-              }
+            }
         ]
     }
-};
+},
+{
+    //Pack the back-end (ES6 transpilation)
+    name: "server",
+    entry: [
+        path.join(__dirname, 'server/server.js')
+    ],
+    output: {
+        path: path.join(__dirname, '/dist-server/'),
+        filename: 'server.js',
+        publicPath: '/'
+    },
+    target: "node",
+    module: {
+        loaders: [
+            {
+                exclude: '/node_modules/',
+                test: /\.js$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            }
+        ]
+    }
+}];
