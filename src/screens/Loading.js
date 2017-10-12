@@ -65,6 +65,6 @@ export default class Loading extends Component {
                     </div>
                 </section>
             </div>
-        );
+        )
     }
 }
