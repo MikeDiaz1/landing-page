@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const env = process.env.NODE_ENV || 'production';
 
@@ -10,6 +11,9 @@ var plugins = [
         template: 'src/index.tpl.html',
         inject: 'body',
         filename: 'index.html'
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+        defaultAttribute: 'async'
     }),
     new webpack.DefinePlugin({
         'process.env': {
