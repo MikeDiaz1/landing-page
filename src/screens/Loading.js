@@ -1,27 +1,38 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-var Demo;
-
 const loading = document.getElementById('loading')
 const content = document.getElementById('content')
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
+var Demo
+var intervalID
+
+//Only run this after web3 exists
+function loadDemo() {
+    Demo = require('./Demo.js').default
+    content.remove()
+    ReactDOM.render(<Demo />, loading)
+    if (intervalID !== 'undefined') {
+        clearInterval(intervalID)
+    }
 }
 
-//Wait for web3 before loading page
+//Wait for web3
 function startUp() {
 
     //Found web3
     if (typeof web3 !== 'undefined') {
-
-        //Run all web3 reliant JavaScript here + render page
-        Demo = require('./Demo.js').default
-        content.remove()
-        ReactDOM.render(<Demo />, loading)
+        loadDemo()
         return
     }
+
+    //Keep checking...
+    var intervalID = setInterval(() => {
+        if (typeof web3 !== 'undefined') {
+            loadDemo()
+            return
+        }
+    }, 1000)
 }
 
 export default class Loading extends Component {
@@ -43,7 +54,7 @@ export default class Loading extends Component {
                             </span>
                             <h2 className="subtitle">
                                 This app requires an Ethereum compatible browser (Mist, MetaMask)
-                                <br></br>
+                            <br></br>
                                 <br></br>
                                 <a href="/">
                                     <span className="icon is-small"><i className="fa fa-arrow-left"></i></span>
