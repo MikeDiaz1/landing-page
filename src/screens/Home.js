@@ -24,13 +24,6 @@ export default class Home extends Component {
 
         <section id="section-2" className="hero is-light is-fullheight">
 
-          <section className="hero is-dark is-medium">
-            <div className="hero-body">
-              <div className="container has-text-centered">
-              </div>
-            </div>
-          </section>
-
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title">
@@ -42,9 +35,9 @@ export default class Home extends Component {
             </div>
           </div>
 
-          <section className="hero is-dark is-small">
+          <section className="hero is-dark">
             <div className="hero-body">
-                <SubscribeBar />
+              <SubscribeBar />
             </div>
           </section>
         </section>
