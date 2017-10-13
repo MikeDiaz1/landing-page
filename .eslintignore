@@ -2,4 +2,4 @@ dist
 dist-server
 node_modules
 webpack.config.js
-server/dev.js
+src/dev.js

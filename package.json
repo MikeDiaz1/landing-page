@@ -6,11 +6,12 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "eslint": "eslint .",
-        "buildFront": "rimraf dist && cross-env NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors",
-        "backBack": "rimraf dist-server && babel -d ./dist-server ./server -s",
+        "buildFront": "rimraf dist && cross-env NODE_ENV=production webpack --progress --colors",
+        "buildBack": "rimraf dist-server && babel -d ./dist-server ./server -s",
         "build": "npm run buildFront && npm run buildBack",
-        "start": "node ./server/dev.js",
-        "dev": "webpack-dev-server"
+        "start": "node ./dist-server/server.js",
+        "dev": "webpack-dev-server",
+        "dev2": "rimraf dist && cross-env NODE_ENV=development webpack --progress --colors && nodemon ./src/dev.js"
     },
     "repository": {
         "type": "git",

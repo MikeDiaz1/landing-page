@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'webpack-dev-server';
 
 var plugins = [
   new webpack.optimize.OccurrenceOrderPlugin(),
@@ -41,7 +41,7 @@ if (env === 'production') {
       }
     })
   )
-} else {
+} else if (env === 'webpack-dev-server') {
   plugins = plugins.concat([
     new webpack.HotModuleReplacementPlugin()
   ]);
@@ -78,7 +78,7 @@ module.exports = Object.assign({
   module: {
     loaders: [
       {
-        exclude: ['/node_modules/', '/server/dev.js/'],
+        exclude: ['/node_modules/', '/src/dev.js/'],
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader',
