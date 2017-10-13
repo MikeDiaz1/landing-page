@@ -1,20 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const env = process.env.NODE_ENV || 'production';
+const env = process.env.NODE_ENV || 'development';
 
 var plugins = [
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new HtmlWebpackPlugin({
-    template: 'src/index.tpl.html',
-    inject: 'body',
-    filename: 'index.html'
-  }),
-  new ScriptExtHtmlWebpackPlugin({
-    defaultAttribute: 'async'
-  }),
+  new CopyWebpackPlugin([{ from: './public'}]),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(env)
@@ -22,7 +14,10 @@ var plugins = [
   })
 ]
 
+const loaderOptionsConfig = {};
+const devConfig = {};
 if (env === 'production') {
+  loaderOptionsConfig.minimize = true;
   plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -46,22 +41,44 @@ if (env === 'production') {
       }
     })
   )
+} else {
+  plugins = plugins.concat([
+    new webpack.HotModuleReplacementPlugin()
+  ]);
+  devConfig.devtool = 'cheap-module-source-map';
+  devConfig.entry = [
+    require.resolve('react-dev-utils/webpackHotDevClient'),
+    './src/index.js'
+  ];
+  devConfig.devServer = {
+    compress: true,
+    contentBase: path.resolve('./dist'),
+    publicPath: '/',
+    hot: true,
+    watchOptions: {
+      ignored: /node_modules/
+    },
+    historyApiFallback: true,
+    port: 5050
+  };
 }
 
-module.exports = {
+plugins.push(new webpack.LoaderOptionsPlugin(loaderOptionsConfig));
+
+module.exports = Object.assign({
   entry: [
     path.join(__dirname, 'src/index.js')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
-    filename: '[name]-[hash].min.js',
+    filename: 'index.min.js',
     publicPath: '/'
   },
   plugins,
   module: {
     loaders: [
       {
-        exclude: '/node_modules/',
+        exclude: ['/node_modules/', '/server/dev.js/'],
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader',
@@ -97,4 +114,4 @@ module.exports = {
       }
     ]
   }
-};
+}, devConfig);

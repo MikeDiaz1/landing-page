@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import logo from '../../img/Logo-white.png'
-
 export default class Navbar extends Component {
 
   scrollTo(id) {
@@ -15,7 +13,7 @@ export default class Navbar extends Component {
       <nav className="navbar">
         <div className="navbar-brand">
           <a className="navbar-item" href="#">
-            <img src={logo} alt="Upropos: The Future of Crowdfunding"></img>
+            <img src="img/Logo-white.png" alt="Upropos: The Future of Crowdfunding"></img>
           </a>
         </div>
         <div className="navbar-menu">

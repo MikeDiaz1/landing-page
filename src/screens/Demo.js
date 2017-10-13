@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import logo from '../../img/Logo.png'
 import WalletInfo from '../components/WalletInfo'
 import WalletLookup from '../components/WalletLookup'
 import SendTokens from '../components/SendTokens'
@@ -69,11 +68,11 @@ export default class Demo extends Component {
               <div className="hero-body has-text-centered">
                 <div className="container">
                   <h1 className="title">
-                    <img src={logo} alt="Upropos: The Future of Crowdfunding"></img>
+                    <img src="img/Logo.png" alt="Upropos: The Future of Crowdfunding"></img>
                   </h1>
                   <h2 className="subtitle">
                     The Future of Crowdfunding
-                                    </h2>
+                  </h2>
                 </div>
               </div>
             </div>

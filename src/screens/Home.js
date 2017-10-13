@@ -13,10 +13,10 @@ export default class Home extends Component {
             <div className="container has-text-centered">
               <h1 className="subtitle is-1">
                 We Are Upropos
-                            </h1>
+              </h1>
               <h2 className="title is-1">
                 The Future of Crowdfunding
-                            </h2>
+              </h2>
             </div>
           </div>
         </section>
@@ -27,10 +27,10 @@ export default class Home extends Component {
               <div className="container has-text-centered">
                 <h1 className="title">
                   Section 1
-                            </h1>
+                </h1>
                 <h2 className="subtitle">
                   Subtitle 1
-                            </h2>
+                </h2>
               </div>
             </div>
           </section>
@@ -38,10 +38,10 @@ export default class Home extends Component {
             <div className="container has-text-centered">
               <h1 className="title">
                 Section 2
-                            </h1>
+              </h1>
               <h2 className="subtitle">
                 Subtitle 2
-                            </h2>
+              </h2>
             </div>
           </div>
         </section>
@@ -51,10 +51,10 @@ export default class Home extends Component {
             <div className="container has-text-centered">
               <h1 className="title">
                 Section 3
-                            </h1>
+              </h1>
               <h2 className="subtitle">
                 Subtitle 3
-                            </h2>
+              </h2>
             </div>
           </div>
           <Footer />
