@@ -4,27 +4,28 @@ A landing page for Upropos built with React and Express.
 
 Uses Bulma SASS with changes
 
-## Demo Instructions
+## Useful Instructions
 Requires Node.js: https://nodejs.org/en/
-
-Open a terminal, cd to the project directory
 
 ```bash
 #1. Install dependencies
 
 npm install
 
-#2a. Build for testing
+#2a. Setup for developing with front-end hot loading
 
 npm run dev
 
-#2b. Or build for production
+#2b. Setup for developing with back-end hot loading
+
+npm run dev2
+
+#3. Build for production
 
 npm run build
 
-#3. Start the server
-
+#4. Serve the production build
 npm start
 ```
 
-Page will be running at http://localhost:5050
+Page will run at http://localhost:5050
