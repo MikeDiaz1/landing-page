@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SubscribeBar from '../components/SubscribeBar'
 
 export default class Home extends Component {
   render() {
@@ -22,28 +23,30 @@ export default class Home extends Component {
         </section>
 
         <section id="section-2" className="hero is-light is-fullheight">
+
           <section className="hero is-dark is-medium">
             <div className="hero-body">
               <div className="container has-text-centered">
-                <h1 className="title">
-                  Section 1
-                </h1>
-                <h2 className="subtitle">
-                  Subtitle 1
-                </h2>
               </div>
             </div>
           </section>
+
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title">
-                Section 2
+                Section 1
               </h1>
               <h2 className="subtitle">
-                Subtitle 2
+                Subtitle 1
               </h2>
             </div>
           </div>
+
+          <section className="hero is-dark is-small">
+            <div className="hero-body">
+                <SubscribeBar />
+            </div>
+          </section>
         </section>
 
         <section id="section-3" className="hero is-white is-fullheight">

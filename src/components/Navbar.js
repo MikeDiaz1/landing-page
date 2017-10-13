@@ -15,6 +15,22 @@ export default class Navbar extends Component {
           <a className="navbar-item" href="#">
             <img src="img/Logo-white.png" alt="Upropos: The Future of Crowdfunding"></img>
           </a>
+
+          <a className="navbar-item is-hidden-desktop" href="https://twitter.com/upropos1" target="_blank">
+              <span className="icon" style={{ color: '#FFF' }}>
+                <i className="fa fa-lg fa-twitter"></i>
+              </span>
+            </a>
+            <a className="navbar-item is-hidden-desktop" href="https://www.facebook.com/Upropos1/" target="_blank">
+              <span className="icon" style={{ color: '#FFF' }}>
+                <i className="fa fa-lg fa-facebook-square"></i>
+              </span>
+            </a>
+            <a className="navbar-item is-hidden-desktop" href="https://www.instagram.com/upropos1/" target="_blank">
+              <span className="icon" style={{ color: '#FFF' }}>
+                <i className="fa fa-lg fa-instagram"></i>
+              </span>
+            </a>
         </div>
         <div className="navbar-menu">
           <div className="navbar-end">
