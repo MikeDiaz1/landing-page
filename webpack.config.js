@@ -88,23 +88,10 @@ module.exports = Object.assign({
       },
       {
         test: /\.(sass|scss)$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'compressed'
-            }
-          }
-        ]
+        loader: 'style-loader!css-loader!sass-loader',
       },
       {
-        test: /.(png|jpg|gif|ico|svg|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        test: /.(svg|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         use: [{
           loader: 'file-loader',
           options: {
